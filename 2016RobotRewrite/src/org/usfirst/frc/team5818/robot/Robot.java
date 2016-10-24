@@ -160,11 +160,19 @@ public class Robot extends IterativeRobot {
     }
     
     public static void updateOnTick() {
-    	joyX = BotConstants.CONTROLJOYLR.getX();
-        joyY = -1*BotConstants.CONTROLJOYFB.getY();
-        SwapButtonDown = BotConstants.CONTROLJOYLR.getRawButton(BotConstants.SWAP_BUTTON);
-        UpButtonDown = BotConstants.CONTROLJOYLR.getRawButton(BotConstants.DOWN_BUTTON);
-        DownButtonDown = BotConstants.CONTROLJOYLR.getRawButton(BotConstants.UP_BUTTON);
+    	if(BotConstants.HANDHELDJOY) {
+    		joyX = BotConstants.PS3JOY.getX();
+    		joyY = BotConstants.PS3JOY.getY();
+    		SwapButtonDown = BotConstants.PS3JOY.getRawButton(BotConstants.PS3_SWAP_BUTTON);
+            UpButtonDown = BotConstants.PS3JOY.getRawButton(BotConstants.PS3_DOWN_BUTTON);
+            DownButtonDown = BotConstants.PS3JOY.getRawButton(BotConstants.PS3_UP_BUTTON);
+    	} else {
+    		joyX = BotConstants.CONTROLJOYLR.getX();
+            joyY = -1*BotConstants.CONTROLJOYFB.getY();
+            SwapButtonDown = BotConstants.CONTROLJOYLR.getRawButton(BotConstants.SWAP_BUTTON);
+            UpButtonDown = BotConstants.CONTROLJOYLR.getRawButton(BotConstants.DOWN_BUTTON);
+            DownButtonDown = BotConstants.CONTROLJOYLR.getRawButton(BotConstants.UP_BUTTON);
+        }
         setDampingFactor();
     }
     public static void checkButtons() {
