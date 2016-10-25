@@ -138,18 +138,6 @@ public class Robot extends IterativeRobot {
         LiveWindow.run();
     }
     
-    public static void setRightVelocity(double numIn) {
-    	BotConstants.TALON_FR.set(-1*numIn*BotConstants.VEL_MULTIPLIER);
-    	BotConstants.TALON_BR.set(-1*numIn*BotConstants.VEL_MULTIPLIER);
-    	BotConstants.TALON_MR.set(-1*numIn*BotConstants.VEL_MULTIPLIER);
-    }
-    
-    public static void setLeftVelocity(double numIn) {
-    	BotConstants.TALON_FL.set(numIn*BotConstants.VEL_MULTIPLIER);
-    	BotConstants.TALON_BL.set(numIn*BotConstants.VEL_MULTIPLIER);
-    	BotConstants.TALON_ML.set(numIn*BotConstants.VEL_MULTIPLIER);
-    }
-    
     public static void setDampingFactor() {
     	dampingFactor = (1 - joyXAbs) * dfMultiplier;
     	if(dampingFactor > 1) {
