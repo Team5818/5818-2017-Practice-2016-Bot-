@@ -18,10 +18,15 @@ public class BotConstants {
 	public static final int PS3_DOWN_BUTTON = 7;
 	public static final int PS3_SWAP_BUTTON = 8;
 	
+	//Drive Wheels
 	public static final CANTalon TALON_FR = new CANTalon(1);
 	public static final CANTalon TALON_BR = new CANTalon(2);
 	public static final CANTalon TALON_MR = new CANTalon(3);
 	public static final CANTalon TALON_FL = new CANTalon(4);
 	public static final CANTalon TALON_BL = new CANTalon(5);
 	public static final CANTalon TALON_ML = new CANTalon(6);
+	
+	//Arm Actuation
+	
+	//Shooters
 }
