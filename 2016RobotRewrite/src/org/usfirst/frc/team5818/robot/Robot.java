@@ -1,7 +1,6 @@
 
 
 //Rewriting 2016 Stronghold Robot as a practice exercise.
-//test
 package org.usfirst.frc.team5818.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -86,7 +85,7 @@ public class Robot extends IterativeRobot {
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
     }
-
+    
     public void teleopInit() {
 		// This makes sure that the autonomous stops running when
         // teleop starts running. If you want the autonomous to 
