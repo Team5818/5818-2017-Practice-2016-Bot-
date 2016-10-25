@@ -16,11 +16,11 @@ public class ShooterArm extends Subsystem {
 		ARM_MOTOR_1.setInverted(true);
 	}
 
-	public static void setArmPower() {
-		ARM_MOTOR_0 = 
+	public static void setArmPower(double numIn) {
+		ARM_MOTOR_0.set(numIn * BotConstants.ARM_POWER_MULTIPLIER);
+		ARM_MOTOR_1.set(numIn * BotConstants.ARM_POWER_MULTIPLIER);
 	}
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+    	
     }
 }
