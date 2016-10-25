@@ -2,8 +2,7 @@ package org.usfirst.frc.team5818.controllers;
 
 import org.usfirst.frc.team5818.constants.BotConstants;
 import org.usfirst.frc.team5818.robot.commands.DriveControlCommand;
-import org.usfirst.frc.team5818.robot.subsystems.DriveTrain;
-
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 
@@ -19,10 +18,15 @@ public class Driver {
 	public static double joyX;
 	public static double joyY;
 	
+	private static Joystick CONTROLJOYFB;
+	private static Joystick CONTROLJOYLR;
+	
 	static Command driveControl;
 
 	public static void driverInit() {
 		driveControl = new DriveControlCommand();
+		CONTROLJOYFB = new Joystick(BotConstants.CONTROLJOYFB_NUM);
+		CONTROLJOYLR = new Joystick(BotConstants.CONTROLJOYLR_NUM);
 	}
 	
 	public static void driverPeriodic() {
@@ -46,11 +50,11 @@ public class Driver {
             UpButtonDown = BotConstants.PS3JOY.getRawButton(BotConstants.PS3_DOWN_BUTTON);
             DownButtonDown = BotConstants.PS3JOY.getRawButton(BotConstants.PS3_UP_BUTTON);
     	} else {
-    		joyX = BotConstants.CONTROLJOYLR.getX();
-            joyY = -1*BotConstants.CONTROLJOYFB.getY();
-            SwapButtonDown = BotConstants.CONTROLJOYLR.getRawButton(BotConstants.SWAP_BUTTON);
-            UpButtonDown = BotConstants.CONTROLJOYLR.getRawButton(BotConstants.DOWN_BUTTON);
-            DownButtonDown = BotConstants.CONTROLJOYLR.getRawButton(BotConstants.UP_BUTTON);
+    		joyX = CONTROLJOYLR.getX();
+            joyY = -1*CONTROLJOYFB.getY();
+            SwapButtonDown = CONTROLJOYLR.getRawButton(BotConstants.SWAP_BUTTON);
+            UpButtonDown = CONTROLJOYLR.getRawButton(BotConstants.DOWN_BUTTON);
+            DownButtonDown = CONTROLJOYLR.getRawButton(BotConstants.UP_BUTTON);
         }
         setDampingFactor();
     }

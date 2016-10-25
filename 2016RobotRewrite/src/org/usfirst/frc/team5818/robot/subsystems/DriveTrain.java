@@ -46,7 +46,7 @@ public class DriveTrain extends Subsystem {
         } else if(yAbs <= 0.05 && x != 0) {
         	//Pivot in place
         	setRightVelocity(-1 * x);
-        	setLeftVelocity(y);
+        	setLeftVelocity(x);
         } else if(x != 0 && y != 0) {
         	//drive and turn
         	if (x > 0) {
