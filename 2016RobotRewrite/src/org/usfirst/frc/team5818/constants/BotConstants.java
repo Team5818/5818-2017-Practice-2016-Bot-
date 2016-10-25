@@ -29,5 +29,7 @@ public class BotConstants {
 	//Arm Actuation
 	public static final CANTalon TALON_ARM_0 = new CANTalon(12);
 	public static final CANTalon TALON_ARM_1 = new CANTalon(7);
+	
+	public static final double ARM_POWER_MULTIPLIER = 1;
 	//Shooters
 }
