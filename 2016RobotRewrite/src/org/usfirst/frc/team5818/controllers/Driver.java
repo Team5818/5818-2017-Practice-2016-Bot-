@@ -23,8 +23,7 @@ public class Driver {
 
 	public static void driverInit() {
 		driveControl = new DriveControlCommand();
-		DriveTrain.initializeDriveTrain();
-    }
+	}
 	
 	public static void driverPeriodic() {
 		Scheduler.getInstance().add(driveControl);
