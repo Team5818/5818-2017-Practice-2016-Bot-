@@ -1,19 +1,38 @@
 package org.usfirst.frc.team5818.robot.subsystems;
 
 import org.usfirst.frc.team5818.constants.BotConstants;
+import org.usfirst.frc.team5818.controllers.Driver;
 import org.usfirst.frc.team5818.robot.Robot;
 
+import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class DriveTrain extends Subsystem {
+	
+	private static CANTalon TALON_MOTOR_FR;
+	private static CANTalon TALON_MOTOR_BR;
+	private static CANTalon TALON_MOTOR_MR;
+	private static CANTalon TALON_MOTOR_FL;
+	private static CANTalon TALON_MOTOR_BL;
+	private static CANTalon TALON_MOTOR_ML;
+	
+	public static void initializeDriveTrain() {
+		TALON_MOTOR_FR = new CANTalon(BotConstants.TALON_FR);
+		TALON_MOTOR_BR = new CANTalon(BotConstants.TALON_BR);
+		TALON_MOTOR_MR = new CANTalon(BotConstants.TALON_MR);
+		TALON_MOTOR_FL = new CANTalon(BotConstants.TALON_FL);
+		TALON_MOTOR_BL = new CANTalon(BotConstants.TALON_BL);
+		TALON_MOTOR_ML = new CANTalon(BotConstants.TALON_MR);
+	}
+	
 	public static void drive() {
 		
-		Robot.updateOnTick();
-    	Robot.checkButtons();
+		Driver.updateOnTick();
+    	Driver.checkButtons();
         
-		double x = Robot.getJoyX();
-		double y = Robot.getJoyY();
-		double df = Robot.getDampingFactor();
+		double x = Driver.getJoyX();
+		double y = Driver.getJoyY();
+		double df = Driver.getDampingFactor();
 		double xAbs = Math.abs(x);
 		double yAbs = Math.abs(y);
 		if (xAbs <= 0.05 && y != 0) {
@@ -45,15 +64,15 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	public static void setRightVelocity(double numIn) {
-    	BotConstants.TALON_FR.set(-1*numIn*BotConstants.VEL_MULTIPLIER);
-    	BotConstants.TALON_BR.set(-1*numIn*BotConstants.VEL_MULTIPLIER);
-    	BotConstants.TALON_MR.set(-1*numIn*BotConstants.VEL_MULTIPLIER);
+    	TALON_MOTOR_FR.set(-1*numIn*BotConstants.VEL_MULTIPLIER);
+    	TALON_MOTOR_BR.set(-1*numIn*BotConstants.VEL_MULTIPLIER);
+    	TALON_MOTOR_MR.set(-1*numIn*BotConstants.VEL_MULTIPLIER);
     }
     
     public static void setLeftVelocity(double numIn) {
-    	BotConstants.TALON_FL.set(numIn*BotConstants.VEL_MULTIPLIER);
-    	BotConstants.TALON_BL.set(numIn*BotConstants.VEL_MULTIPLIER);
-    	BotConstants.TALON_ML.set(numIn*BotConstants.VEL_MULTIPLIER);
+    	TALON_MOTOR_FL.set(numIn*BotConstants.VEL_MULTIPLIER);
+    	TALON_MOTOR_BL.set(numIn*BotConstants.VEL_MULTIPLIER);
+    	TALON_MOTOR_ML.set(numIn*BotConstants.VEL_MULTIPLIER);
     }
 	
 	public void initDefaultCommand() {

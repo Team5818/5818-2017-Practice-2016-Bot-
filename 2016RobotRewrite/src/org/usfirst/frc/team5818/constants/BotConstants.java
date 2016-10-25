@@ -25,16 +25,16 @@ public class BotConstants {
 	public static final Joystick CODRIVER_RIGHT = new Joystick(3);
 	
 	//Drive Wheels
-	public static final CANTalon TALON_FR = new CANTalon(1);
-	public static final CANTalon TALON_BR = new CANTalon(2);
-	public static final CANTalon TALON_MR = new CANTalon(3);
-	public static final CANTalon TALON_FL = new CANTalon(4);
-	public static final CANTalon TALON_BL = new CANTalon(5);
-	public static final CANTalon TALON_ML = new CANTalon(6);
+	public static final int TALON_FR = 1;
+	public static final int TALON_BR = 2;
+	public static final int TALON_MR = 3;
+	public static final int TALON_FL = 4;
+	public static final int TALON_BL = 5;
+	public static final int TALON_ML = 6;
 	
 	//Arm Actuation
-	public static final CANTalon TALON_ARM_0 = new CANTalon(12);
-	public static final CANTalon TALON_ARM_1 = new CANTalon(7);
+	public static final int TALON_ARM_0 = 12;
+	public static final int TALON_ARM_1 = 7;
 	
 	public static final double ARM_POWER_MULTIPLIER = 1;
 	//Shooters

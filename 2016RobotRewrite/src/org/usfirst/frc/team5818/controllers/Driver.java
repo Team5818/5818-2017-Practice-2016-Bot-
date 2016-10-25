@@ -2,12 +2,12 @@ package org.usfirst.frc.team5818.controllers;
 
 import org.usfirst.frc.team5818.constants.BotConstants;
 import org.usfirst.frc.team5818.robot.commands.DriveControlCommand;
+import org.usfirst.frc.team5818.robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 
 public class Driver {
-	
 	public static boolean SwapButtonDown;
 	public static boolean DownButtonDown;
 	public static boolean UpButtonDown;
@@ -23,6 +23,7 @@ public class Driver {
 
 	public static void driverInit() {
 		driveControl = new DriveControlCommand();
+		DriveTrain.initializeDriveTrain();
     }
 	
 	public static void driverPeriodic() {
