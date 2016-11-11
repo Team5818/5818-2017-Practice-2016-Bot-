@@ -29,6 +29,9 @@ public class BotConstants {
 	//Arm Actuation
 	public static final int TALON_ARM_0 = 12;
 	public static final int TALON_ARM_1 = 7;
+
+	public static final int CODRIVER_LEFT = 2;
+	public static final int CODRIVER_RIGHT = 3;
 	
 	public static final double ARM_POWER_MULTIPLIER = 1;
 	//Shooters

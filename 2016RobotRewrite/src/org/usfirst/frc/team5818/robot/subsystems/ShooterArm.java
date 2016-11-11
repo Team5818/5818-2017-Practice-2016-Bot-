@@ -1,6 +1,8 @@
 package org.usfirst.frc.team5818.robot.subsystems;
 
 import org.usfirst.frc.team5818.constants.BotConstants;
+import org.usfirst.frc.team5818.controllers.CoDriver;
+
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.PIDController;
@@ -40,5 +42,9 @@ public class ShooterArm extends Subsystem implements PIDOutput{
 	public void setArmPosition(double target) {
 		armController.setSetpoint(target);
 		armController.enable();
+	}
+	public void operate() {
+		CoDriver.updateOnTick();
+		setArmPower(CoDriver.getJoyY());
 	}
 }
