@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
+import org.usfirst.frc.team5818.controllers.CoDriver;
 import org.usfirst.frc.team5818.controllers.Driver;
 import org.usfirst.frc.team5818.robot.commands.ExampleCommand;
 import org.usfirst.frc.team5818.robot.subsystems.DriveTrain;
@@ -108,6 +109,7 @@ public class Robot extends IterativeRobot {
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
         Driver.driverInit();
+        CoDriver.CoDriverInit();
     }
 
     /**
@@ -116,6 +118,7 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
         Driver.driverPeriodic();
+        CoDriver.CoDriverPeriodic();
     }
     
     /**
