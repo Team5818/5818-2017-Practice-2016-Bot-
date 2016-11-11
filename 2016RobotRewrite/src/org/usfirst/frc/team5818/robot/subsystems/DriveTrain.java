@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team5818.robot.subsystems.DriveTrainSide;
 
-public class DriveTrain extends Subsystem{
+public class DriveTrain extends Subsystem {
 	
 	private static CANTalon TALON_MOTOR_FR;
 	private static CANTalon TALON_MOTOR_BR;
@@ -15,10 +15,10 @@ public class DriveTrain extends Subsystem{
 	private static CANTalon TALON_MOTOR_BL;
 	private static CANTalon TALON_MOTOR_ML;
 	
-	private final static DriveTrainSide left =
+	private final DriveTrainSide left =
             new DriveTrainSide(TALON_MOTOR_FL, TALON_MOTOR_ML, TALON_MOTOR_BL, false, DriveTrainSide.Side.LEFT);
     // Right motors are reversed.
-    private final static DriveTrainSide right =
+    private final DriveTrainSide right =
             new DriveTrainSide(TALON_MOTOR_FR, TALON_MOTOR_MR, TALON_MOTOR_BR, true, DriveTrainSide.Side.RIGHT);
 
 	public static void initializeDriveTrain() {
