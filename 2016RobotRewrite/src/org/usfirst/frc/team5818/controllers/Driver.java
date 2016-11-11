@@ -15,8 +15,8 @@ public class Driver {
 	public static double dampingFactor;
 	private static double dfMultiplier = 1;
 	
-	public static double joyX;
-	public static double joyY;
+	private static double joyX;
+	private static double joyY;
 	
 	private static Joystick CONTROLJOYFB;
 	private static Joystick CONTROLJOYLR;
