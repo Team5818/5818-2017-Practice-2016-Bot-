@@ -16,6 +16,7 @@ public class ShooterArm extends Subsystem implements PIDOutput{
 		ARM_MOTOR_1 = new CANTalon(BotConstants.TALON_ARM_1);
 		
 		ARM_MOTOR_1.setInverted(true);
+		ARM_MOTOR_1.reverseOutput(true);
 	}
 
 	public void setArmPower(double numIn) {

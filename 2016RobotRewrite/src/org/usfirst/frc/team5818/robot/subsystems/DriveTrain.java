@@ -2,12 +2,9 @@ package org.usfirst.frc.team5818.robot.subsystems;
 
 import org.usfirst.frc.team5818.constants.BotConstants;
 import org.usfirst.frc.team5818.controllers.Driver;
-import org.usfirst.frc.team5818.robot.Robot;
-
 import edu.wpi.first.wpilibj.CANTalon;
-import edu.wpi.first.wpilibj.PIDController;
-import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import org.usfirst.frc.team5818.robot.subsystems.DriveTrainSide;
 
 public class DriveTrain extends Subsystem{
 	
@@ -18,6 +15,12 @@ public class DriveTrain extends Subsystem{
 	private static CANTalon TALON_MOTOR_BL;
 	private static CANTalon TALON_MOTOR_ML;
 	
+	private final static DriveTrainSide left =
+            new DriveTrainSide(TALON_MOTOR_FL, TALON_MOTOR_ML, TALON_MOTOR_BL, false, DriveTrainSide.Side.LEFT);
+    // Right motors are reversed.
+    private final static DriveTrainSide right =
+            new DriveTrainSide(TALON_MOTOR_FR, TALON_MOTOR_MR, TALON_MOTOR_BR, true, DriveTrainSide.Side.RIGHT);
+
 	public static void initializeDriveTrain() {
 		TALON_MOTOR_FR = new CANTalon(BotConstants.TALON_FR);
 		TALON_MOTOR_BR = new CANTalon(BotConstants.TALON_BR);
@@ -25,16 +28,9 @@ public class DriveTrain extends Subsystem{
 		TALON_MOTOR_FL = new CANTalon(BotConstants.TALON_FL);
 		TALON_MOTOR_BL = new CANTalon(BotConstants.TALON_BL);
 		TALON_MOTOR_ML = new CANTalon(BotConstants.TALON_MR);
-		
-		TALON_MOTOR_FR.setInverted(true);
-		TALON_MOTOR_BR.setInverted(true);
-		TALON_MOTOR_MR.setInverted(true);
-		TALON_MOTOR_FR.reverseOutput(true);
-		TALON_MOTOR_BR.reverseOutput(true);
-		TALON_MOTOR_MR.reverseOutput(true);
 	}
 	
-	public static void drive() {
+	public void drive() {
 		
 		Driver.updateOnTick();
     	Driver.checkButtons();
@@ -68,20 +64,18 @@ public class DriveTrain extends Subsystem{
         }
 	}
 	
-	public static void dance() {
-		
-	}
-	
-	public static void setRightVelocity(double numIn) {
-    	TALON_MOTOR_FR.set(numIn*BotConstants.VEL_MULTIPLIER);
-    	TALON_MOTOR_BR.set(numIn*BotConstants.VEL_MULTIPLIER);
-    	TALON_MOTOR_MR.set(numIn*BotConstants.VEL_MULTIPLIER);
+	public void setRightVelocity(double numIn) {
+    	right.setVelocity(numIn);
+		//TALON_MOTOR_FR.set(numIn*BotConstants.VEL_MULTIPLIER);
+    	//TALON_MOTOR_BR.set(numIn*BotConstants.VEL_MULTIPLIER);
+    	//TALON_MOTOR_MR.set(numIn*BotConstants.VEL_MULTIPLIER);
     }
     
-    public static void setLeftVelocity(double numIn) {
-    	TALON_MOTOR_FL.set(numIn*BotConstants.VEL_MULTIPLIER);
-    	TALON_MOTOR_BL.set(numIn*BotConstants.VEL_MULTIPLIER);
-    	TALON_MOTOR_ML.set(numIn*BotConstants.VEL_MULTIPLIER);
+    public void setLeftVelocity(double numIn) {
+    	left.setVelocity(numIn);
+		//TALON_MOTOR_FL.set(numIn*BotConstants.VEL_MULTIPLIER);
+    	//TALON_MOTOR_BL.set(numIn*BotConstants.VEL_MULTIPLIER);
+    	//TALON_MOTOR_ML.set(numIn*BotConstants.VEL_MULTIPLIER);
     }
 	
     public void initDefaultCommand() {
