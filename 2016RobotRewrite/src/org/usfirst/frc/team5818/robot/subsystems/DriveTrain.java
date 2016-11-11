@@ -66,6 +66,7 @@ public class DriveTrain extends Subsystem {
 	
 	public void setRightVelocity(double numIn) {
     	right.setVelocity(numIn);
+    	//right.setSideVelocity(numIn);
 		//TALON_MOTOR_FR.set(numIn*BotConstants.VEL_MULTIPLIER);
     	//TALON_MOTOR_BR.set(numIn*BotConstants.VEL_MULTIPLIER);
     	//TALON_MOTOR_MR.set(numIn*BotConstants.VEL_MULTIPLIER);
@@ -73,6 +74,7 @@ public class DriveTrain extends Subsystem {
     
     public void setLeftVelocity(double numIn) {
     	left.setVelocity(numIn);
+    	//left.setSideVelocity(numIn);
 		//TALON_MOTOR_FL.set(numIn*BotConstants.VEL_MULTIPLIER);
     	//TALON_MOTOR_BL.set(numIn*BotConstants.VEL_MULTIPLIER);
     	//TALON_MOTOR_ML.set(numIn*BotConstants.VEL_MULTIPLIER);
