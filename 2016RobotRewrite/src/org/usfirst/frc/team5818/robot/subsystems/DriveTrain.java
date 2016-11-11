@@ -5,9 +5,11 @@ import org.usfirst.frc.team5818.controllers.Driver;
 import org.usfirst.frc.team5818.robot.Robot;
 
 import edu.wpi.first.wpilibj.CANTalon;
+import edu.wpi.first.wpilibj.PIDController;
+import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class DriveTrain extends Subsystem {
+public class DriveTrain extends Subsystem{
 	
 	private static CANTalon TALON_MOTOR_FR;
 	private static CANTalon TALON_MOTOR_BR;
@@ -27,6 +29,9 @@ public class DriveTrain extends Subsystem {
 		TALON_MOTOR_FR.setInverted(true);
 		TALON_MOTOR_BR.setInverted(true);
 		TALON_MOTOR_MR.setInverted(true);
+		TALON_MOTOR_FR.reverseOutput(true);
+		TALON_MOTOR_BR.reverseOutput(true);
+		TALON_MOTOR_MR.reverseOutput(true);
 	}
 	
 	public static void drive() {
@@ -79,8 +84,10 @@ public class DriveTrain extends Subsystem {
     	TALON_MOTOR_ML.set(numIn*BotConstants.VEL_MULTIPLIER);
     }
 	
-	public void initDefaultCommand() {
+    public void initDefaultCommand() {
 		
 		
 	}
+
+	
 }
