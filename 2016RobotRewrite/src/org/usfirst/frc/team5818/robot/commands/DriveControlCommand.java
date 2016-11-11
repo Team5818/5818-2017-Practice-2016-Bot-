@@ -6,18 +6,22 @@ import org.usfirst.frc.team5818.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class DriveControlCommand extends Command{
+	
+	private DriveTrain dTrain;
+	
 	public DriveControlCommand() {
         requires(Robot.driveTrain);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	DriveTrain.initializeDriveTrain();
+    	dTrain = new DriveTrain();
+    	dTrain.initializeDriveTrain();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	DriveTrain.drive();
+    	dTrain.drive();
     }
 
     // Make this return true when this Command no longer needs to run execute()
