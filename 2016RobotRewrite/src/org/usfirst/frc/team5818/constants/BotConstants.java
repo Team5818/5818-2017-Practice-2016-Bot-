@@ -18,12 +18,6 @@ public class BotConstants {
 	public static final int PS3_DOWN_BUTTON = 7;
 	public static final int PS3_SWAP_BUTTON = 8;
 	
-	//CoDriving Constants
-	//  TO DO: MOVE JOYSTICK INIT TO CO-DRIVER INIT //
-	//  CONVERT NUMS TO CONSTANTS //
-	public static final Joystick CODRIVER_LEFT = new Joystick(2);
-	public static final Joystick CODRIVER_RIGHT = new Joystick(3);
-	
 	//Drive Wheels
 	public static final int TALON_FR = 1;
 	public static final int TALON_BR = 2;
