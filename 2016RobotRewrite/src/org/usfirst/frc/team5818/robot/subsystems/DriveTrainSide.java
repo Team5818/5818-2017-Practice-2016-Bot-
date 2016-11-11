@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class DriveTrainSide extends Subsystem implements PIDOutput {
 	
-	private static CANTalon fTal, mTal, bTal;
+	private CANTalon fTal, mTal, bTal;
 	
 	enum Side {
         RIGHT, LEFT;
@@ -24,13 +24,13 @@ public class DriveTrainSide extends Subsystem implements PIDOutput {
 	
 	public PIDController velController = new PIDController(PID_KP, PID_KI, PID_KD, mTal, this);
 	
-    public static void setVelocity(double numIn) {
+    public void setVelocity(double numIn) {
     	fTal.set(numIn*BotConstants.VEL_MULTIPLIER);
     	mTal.set(numIn*BotConstants.VEL_MULTIPLIER);
     	bTal.set(numIn*BotConstants.VEL_MULTIPLIER);
     }
     
-    public static void setInversion(CANTalon fTalon, CANTalon mTalon, CANTalon bTalon,boolean inverted) {
+    public void setInversion(CANTalon fTalon, CANTalon mTalon, CANTalon bTalon,boolean inverted) {
 		fTalon.setInverted(inverted);
 		fTalon.reverseOutput(inverted);
 		mTalon.setInverted(inverted);

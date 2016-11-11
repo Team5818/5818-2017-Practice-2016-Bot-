@@ -51,7 +51,7 @@ public class Driver {
             DownButtonDown = BotConstants.PS3JOY.getRawButton(BotConstants.PS3_UP_BUTTON);
     	} else {
     		joyX = CONTROLJOYLR.getX();
-            joyY = -1*CONTROLJOYFB.getY();
+            joyY = CONTROLJOYFB.getY();
             SwapButtonDown = CONTROLJOYLR.getRawButton(BotConstants.SWAP_BUTTON);
             UpButtonDown = CONTROLJOYLR.getRawButton(BotConstants.DOWN_BUTTON);
             DownButtonDown = CONTROLJOYLR.getRawButton(BotConstants.UP_BUTTON);
