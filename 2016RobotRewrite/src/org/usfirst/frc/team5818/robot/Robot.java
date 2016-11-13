@@ -11,6 +11,8 @@ import org.usfirst.frc.team5818.controllers.Driver;
 import org.usfirst.frc.team5818.robot.commands.ExampleCommand;
 import org.usfirst.frc.team5818.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5818.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team5818.robot.subsystems.ShooterArm;
+
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -37,6 +39,7 @@ public class Robot extends IterativeRobot {
 	
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static final DriveTrain driveTrain = new DriveTrain();
+	public static final ShooterArm shootArm = new ShooterArm();
 	
 	Command autonomousCommand;
     SendableChooser chooser;
