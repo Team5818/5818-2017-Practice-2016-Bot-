@@ -21,7 +21,7 @@ public class DriveTrain extends Subsystem {
     private final DriveTrainSide right =
             new DriveTrainSide(TALON_MOTOR_FR, TALON_MOTOR_MR, TALON_MOTOR_BR, true, DriveTrainSide.Side.RIGHT);
 
-	public static void initializeDriveTrain() {
+	public void initializeDriveTrain() {
 		TALON_MOTOR_FR = new CANTalon(BotConstants.TALON_FR);
 		TALON_MOTOR_BR = new CANTalon(BotConstants.TALON_BR);
 		TALON_MOTOR_MR = new CANTalon(BotConstants.TALON_MR);
