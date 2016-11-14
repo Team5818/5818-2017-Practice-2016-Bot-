@@ -59,26 +59,22 @@ public class DriveTrain extends Subsystem {
         	}
         } else {
         	//stop
-        	setRightVelocity(0);
-        	setLeftVelocity(0);
+        	setRightVelocity(0); //For Non-PID
+        	setLeftVelocity(0); //For Non-PID
+        	right.brake();
+        	left.brake();
         }
 	}
 	
 	public void setRightVelocity(double numIn) {
-    	right.setVelocity(numIn);
-    	//right.setSideVelocity(numIn);
-		//TALON_MOTOR_FR.set(numIn*BotConstants.VEL_MULTIPLIER);
-    	//TALON_MOTOR_BR.set(numIn*BotConstants.VEL_MULTIPLIER);
-    	//TALON_MOTOR_MR.set(numIn*BotConstants.VEL_MULTIPLIER);
-    }
+    	//right.setVelocity(numIn); //For Non-PID
+    	right.setSideVelocity(numIn); //For PID
+	}
     
     public void setLeftVelocity(double numIn) {
-    	left.setVelocity(numIn);
-    	//left.setSideVelocity(numIn);
-		//TALON_MOTOR_FL.set(numIn*BotConstants.VEL_MULTIPLIER);
-    	//TALON_MOTOR_BL.set(numIn*BotConstants.VEL_MULTIPLIER);
-    	//TALON_MOTOR_ML.set(numIn*BotConstants.VEL_MULTIPLIER);
-    }
+    	//left.setVelocity(numIn); //For Non-PID
+    	left.setSideVelocity(numIn); //For PID
+	}
 	
     public void initDefaultCommand() {
 		

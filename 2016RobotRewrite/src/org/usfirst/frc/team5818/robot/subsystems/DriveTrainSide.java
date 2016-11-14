@@ -4,9 +4,11 @@ import org.usfirst.frc.team5818.constants.BotConstants;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDOutput;
+import edu.wpi.first.wpilibj.PIDSource;
+import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class DriveTrainSide extends Subsystem implements PIDOutput {
+public class DriveTrainSide extends Subsystem implements PIDOutput, PIDSource{
 	
 	private CANTalon fTal, mTal, bTal;
 	
@@ -22,7 +24,7 @@ public class DriveTrainSide extends Subsystem implements PIDOutput {
 	private static final double PID_KI = 1.0; // CHANGE ME //
 	private static final double PID_KD = 1.0; ///////////////
 	
-	public PIDController velController = new PIDController(PID_KP, PID_KI, PID_KD, mTal, this);
+	public PIDController velController = new PIDController(PID_KP, PID_KI, PID_KD, this, this);
 	
     public void setVelocity(double numIn) {
     	fTal.set(numIn*BotConstants.VEL_MULTIPLIER);
@@ -43,16 +45,40 @@ public class DriveTrainSide extends Subsystem implements PIDOutput {
 		
 		
 	}
-
+	
+	public void brake() {
+		for(double i = this.pidGet(); i >= 0; i = i - BotConstants.BRAKE_FACTOR) {
+			this.setSideVelocity(i);
+		}
+	}
+	
 	@Override
 	public void pidWrite(double output) {
 		setVelocity(output);
 	}
 	
 	public void setSideVelocity(double target) {
-		//velController.set
-		velController.enable();
+		if(target <= BotConstants.MAX_VELOCITY) {
+			velController.setSetpoint(target);
+			velController.enable();
+		} else {
+			velController.setSetpoint(BotConstants.MAX_VELOCITY);
+			velController.enable();
+		}
 	}
 
+	@Override
+	public void setPIDSourceType(PIDSourceType pidSource) {
 	
+	}
+
+	@Override
+	public PIDSourceType getPIDSourceType() {
+		return null;
+	}
+
+	@Override
+	public double pidGet() {
+		return mTal.getSpeed();
+	}
 }
