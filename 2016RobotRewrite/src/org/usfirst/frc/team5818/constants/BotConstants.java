@@ -20,21 +20,9 @@ public class BotConstants {
 	public static final int PS3_DOWN_BUTTON = 7;
 	public static final int PS3_SWAP_BUTTON = 8;
 	
-	//Drive Wheels
-	public static final int TALON_FR = 1;
-	public static final int TALON_BR = 2;
-	public static final int TALON_MR = 3;
-	public static final int TALON_FL = 4;
-	public static final int TALON_BL = 5;
-	public static final int TALON_ML = 6;
-	
 	//Arm Actuation
-	public static final int TALON_ARM_0 = 12;
-	public static final int TALON_ARM_1 = 7;
-
 	public static final int CODRIVER_LEFT = 2;
 	public static final int CODRIVER_RIGHT = 3;
-	
 	public static final double ARM_POWER_MULTIPLIER = 1;
 	//Shooters
 }

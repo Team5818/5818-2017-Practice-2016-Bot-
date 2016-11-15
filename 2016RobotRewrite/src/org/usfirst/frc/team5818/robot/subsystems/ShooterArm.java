@@ -2,6 +2,7 @@ package org.usfirst.frc.team5818.robot.subsystems;
 
 import org.usfirst.frc.team5818.constants.BotConstants;
 import org.usfirst.frc.team5818.controllers.CoDriver;
+import org.usfirst.frc.team5818.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.CANTalon;
@@ -14,8 +15,8 @@ public class ShooterArm extends Subsystem implements PIDOutput{
 	private static CANTalon ARM_MOTOR_1;
 
 	public ShooterArm() {
-		ARM_MOTOR_0 = new CANTalon(BotConstants.TALON_ARM_0);
-		ARM_MOTOR_1 = new CANTalon(BotConstants.TALON_ARM_1);
+		ARM_MOTOR_0 = new CANTalon(RobotMap.TALON_ARM_0);
+		ARM_MOTOR_1 = new CANTalon(RobotMap.TALON_ARM_1);
 		
 		ARM_MOTOR_1.setInverted(true);
 		ARM_MOTOR_1.reverseOutput(true);

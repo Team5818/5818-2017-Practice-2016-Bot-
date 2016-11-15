@@ -4,6 +4,8 @@ import org.usfirst.frc.team5818.constants.BotConstants;
 import org.usfirst.frc.team5818.controllers.Driver;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.command.Subsystem;
+
+import org.usfirst.frc.team5818.robot.RobotMap;
 import org.usfirst.frc.team5818.robot.subsystems.DriveTrainSide;
 
 public class DriveTrain extends Subsystem {
@@ -22,12 +24,12 @@ public class DriveTrain extends Subsystem {
             new DriveTrainSide(TALON_MOTOR_FR, TALON_MOTOR_MR, TALON_MOTOR_BR, true, DriveTrainSide.Side.RIGHT);
 
 	public void initializeDriveTrain() {
-		TALON_MOTOR_FR = new CANTalon(BotConstants.TALON_FR);
-		TALON_MOTOR_BR = new CANTalon(BotConstants.TALON_BR);
-		TALON_MOTOR_MR = new CANTalon(BotConstants.TALON_MR);
-		TALON_MOTOR_FL = new CANTalon(BotConstants.TALON_FL);
-		TALON_MOTOR_BL = new CANTalon(BotConstants.TALON_BL);
-		TALON_MOTOR_ML = new CANTalon(BotConstants.TALON_MR);
+		TALON_MOTOR_FR = new CANTalon(RobotMap.TALON_FR);
+		TALON_MOTOR_BR = new CANTalon(RobotMap.TALON_BR);
+		TALON_MOTOR_MR = new CANTalon(RobotMap.TALON_MR);
+		TALON_MOTOR_FL = new CANTalon(RobotMap.TALON_FL);
+		TALON_MOTOR_BL = new CANTalon(RobotMap.TALON_BL);
+		TALON_MOTOR_ML = new CANTalon(RobotMap.TALON_MR);
 	}
 	
 	public void drive() {
