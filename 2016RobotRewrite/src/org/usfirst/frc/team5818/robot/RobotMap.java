@@ -6,7 +6,7 @@ package org.usfirst.frc.team5818.robot;
  * floating around.
  */
 public class RobotMap {
-    //Drive Wheels
+    // Drive Wheels
 	public static final int TALON_FR = 1;
 	public static final int TALON_BR = 2;
 	public static final int TALON_MR = 3;
@@ -14,7 +14,10 @@ public class RobotMap {
 	public static final int TALON_BL = 5;
 	public static final int TALON_ML = 6;
 		
-	//Arm Actuation
+	// Arm Actuation
 	public static final int TALON_ARM_0 = 12;
 	public static final int TALON_ARM_1 = 7;
+	
+	// Gyro in
+	public static final int GYRO_CHANNEL = 0;
 }
