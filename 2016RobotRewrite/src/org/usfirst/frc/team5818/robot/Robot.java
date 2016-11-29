@@ -31,7 +31,6 @@ public class Robot extends IterativeRobot {
 	//private static boolean buttonUp;
 	
 	public static OI oi;
-
 	
 	
 	//public static Joystick controlJoyFB = new Joystick(0);
@@ -51,11 +50,12 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
 		oi = new OI();
+		
         chooser = new SendableChooser();
         chooser.addDefault("Default Auto", new ExampleCommand());
 //        chooser.addObject("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", chooser);
-        DriveTrain.initializeDriveTrain();
+        drivetrain.initializeDriveTrain();
     }
 	
 	/**
