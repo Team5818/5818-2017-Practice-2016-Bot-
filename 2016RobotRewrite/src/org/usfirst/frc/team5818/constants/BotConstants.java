@@ -4,6 +4,9 @@ import edu.wpi.first.wpilibj.Joystick;
 
 public class BotConstants {
 	//Driving Constants
+	
+	public static boolean DRIVE_ENABLED = false;
+	
 	public static double VEL_MULTIPLIER = 4;
 	public static double BRAKE_FACTOR = 0.0001;
 	public static double MAX_VELOCITY = 5.0;

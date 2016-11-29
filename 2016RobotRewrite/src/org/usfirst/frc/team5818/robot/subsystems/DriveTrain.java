@@ -39,6 +39,10 @@ public class DriveTrain extends Subsystem {
         
 		double x = Driver.getJoyX();
 		double y = Driver.getJoyY();
+		if(!BotConstants.DRIVE_ENABLED) {
+			x = 0;
+			y = 0;
+		}
 		double df = Driver.getDampingFactor();
 		double xAbs = Math.abs(x);
 		double yAbs = Math.abs(y);
