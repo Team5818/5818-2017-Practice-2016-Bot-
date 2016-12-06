@@ -57,7 +57,10 @@ public class DriveTrainSide extends Subsystem implements PIDOutput, PIDSource{
 	
 	public void brake() {
 		for(double i = this.pidGet(); i >= 0; i = i - BotConstants.BRAKE_FACTOR) {
-			this.setSideVelocity(i);
+			if(i <= BotConstants.JOY_DEADZONE * BotConstants.VEL_MULTIPLIER)
+				this.setSideVelocity(0);
+			else
+				this.setSideVelocity(i);
 		}
 	}
 	
