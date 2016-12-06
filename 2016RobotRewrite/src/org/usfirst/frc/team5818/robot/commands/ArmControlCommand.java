@@ -18,7 +18,6 @@ public class ArmControlCommand extends Command{
     // Called just before this Command runs the first time
     protected void initialize() {
     	arm = new ShooterArm();
-    	CoDriver.CoDriverInit();
     }
 
     // Called repeatedly when this Command is scheduled to run
