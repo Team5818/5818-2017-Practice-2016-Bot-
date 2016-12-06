@@ -17,13 +17,18 @@ public class DriveTrain extends Subsystem {
 	private static CANTalon TALON_MOTOR_BL;
 	private static CANTalon TALON_MOTOR_ML;
 	
-	private final DriveTrainSide left =
-            new DriveTrainSide(TALON_MOTOR_FL, TALON_MOTOR_ML, TALON_MOTOR_BL, false, DriveTrainSide.Side.LEFT);
+	private final DriveTrainSide left;
+            
     // Right motors are reversed.
-    private final DriveTrainSide right =
-            new DriveTrainSide(TALON_MOTOR_FR, TALON_MOTOR_MR, TALON_MOTOR_BR, true, DriveTrainSide.Side.RIGHT);
+    private final DriveTrainSide right;
+    
+    public DriveTrain() {
+    	initializeDriveTrain();
+    	left = new DriveTrainSide(TALON_MOTOR_FL, TALON_MOTOR_ML, TALON_MOTOR_BL, false, DriveTrainSide.Side.LEFT);
+        right = new DriveTrainSide(TALON_MOTOR_FR, TALON_MOTOR_MR, TALON_MOTOR_BR, true, DriveTrainSide.Side.RIGHT);
+    }
 
-	public void initializeDriveTrain() {
+	public static void initializeDriveTrain() {
 		TALON_MOTOR_FR = new CANTalon(RobotMap.TALON_FR);
 		TALON_MOTOR_BR = new CANTalon(RobotMap.TALON_BR);
 		TALON_MOTOR_MR = new CANTalon(RobotMap.TALON_MR);

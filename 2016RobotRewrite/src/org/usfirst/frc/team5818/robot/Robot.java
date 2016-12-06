@@ -32,10 +32,12 @@ public class Robot extends IterativeRobot {
 	
 	public static OI oi;
 	
-	
 	//public static Joystick controlJoyFB = new Joystick(0);
 	//public static Joystick controlJoyLR = new Joystick(1);
 	
+	static {
+		System.err.println();;
+	}
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static final DriveTrain driveTrain = new DriveTrain();
 	public static final ShooterArm shootArm = new ShooterArm();
@@ -53,7 +55,7 @@ public class Robot extends IterativeRobot {
 		
         chooser = new SendableChooser();
         chooser.addDefault("Default Auto", new ExampleCommand());
-//        chooser.addObject("My Auto", new MyAutoCommand());
+        //chooser.addObject("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", chooser);
         driveTrain.initializeDriveTrain();
     }
@@ -93,7 +95,6 @@ public class Robot extends IterativeRobot {
 			autonomousCommand = new ExampleCommand();
 			break;
 		} */
-    	
     	// schedule the autonomous command (example)
         if (autonomousCommand != null) autonomousCommand.start();
     }
