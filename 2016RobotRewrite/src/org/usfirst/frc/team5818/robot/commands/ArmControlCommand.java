@@ -11,14 +11,13 @@ public class ArmControlCommand extends Command{
 	
 	private ShooterArm arm;
 	
-	public ArmControlCommand() {
+	public ArmControlCommand(ShooterArm armIn) {
         requires(Robot.shootArm);
+        arm = armIn;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	arm = new ShooterArm();
-    	CoDriver.CoDriverInit();
     }
 
     // Called repeatedly when this Command is scheduled to run

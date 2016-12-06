@@ -2,6 +2,8 @@ package org.usfirst.frc.team5818.controllers;
 
 import org.usfirst.frc.team5818.constants.BotConstants;
 import org.usfirst.frc.team5818.robot.commands.DriveControlCommand;
+import org.usfirst.frc.team5818.robot.subsystems.DriveTrain;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -23,8 +25,8 @@ public class Driver {
 	
 	static Command driveControl;
 
-	public static void driverInit() {
-		driveControl = new DriveControlCommand();
+	public static void driverInit(DriveTrain train) {
+		driveControl = new DriveControlCommand(train);
 		CONTROLJOYFB = new Joystick(BotConstants.CONTROLJOYFB_NUM);
 		CONTROLJOYLR = new Joystick(BotConstants.CONTROLJOYLR_NUM);
 	}
@@ -73,7 +75,7 @@ public class Driver {
     	return joyX;
     }
     public static double getJoyY() {
-    	return joyY;
+    	return -1*joyY;
     }
     public static double getJoyXAbs() {
     	return joyXAbs;

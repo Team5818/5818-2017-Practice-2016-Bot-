@@ -11,8 +11,9 @@ import edu.wpi.first.wpilibj.PIDOutput;
 
 public class ShooterArm extends Subsystem implements PIDOutput{
     
-	private static CANTalon ARM_MOTOR_0;
-	private static CANTalon ARM_MOTOR_1;
+	private final CANTalon ARM_MOTOR_0;
+	private final CANTalon ARM_MOTOR_1;
+	public PIDController armController;
 
 	public ShooterArm() {
 		ARM_MOTOR_0 = new CANTalon(RobotMap.TALON_ARM_0);
@@ -20,6 +21,7 @@ public class ShooterArm extends Subsystem implements PIDOutput{
 		
 		ARM_MOTOR_1.setInverted(true);
 		ARM_MOTOR_1.reverseOutput(true);
+		armController = new PIDController(PID_KP, PID_KI, PID_KD, ARM_MOTOR_0, this);
 	}
 
 	public void setArmPower(double numIn) {
@@ -30,7 +32,7 @@ public class ShooterArm extends Subsystem implements PIDOutput{
 	private static final double PID_KI = 1.0; // CHANGE ME //
 	private static final double PID_KD = 1.0; ///////////////
 	
-	public PIDController armController = new PIDController(PID_KP, PID_KI, PID_KD, ARM_MOTOR_0, this);
+	
 	
     public void initDefaultCommand() {
     	

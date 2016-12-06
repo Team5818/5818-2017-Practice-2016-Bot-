@@ -9,13 +9,13 @@ public class DriveControlCommand extends Command{
 	
 	private DriveTrain dTrain;
 	
-	public DriveControlCommand() {
+	public DriveControlCommand(DriveTrain train) {
         requires(Robot.driveTrain);
+        dTrain = train;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	dTrain = new DriveTrain();
     	dTrain.initializeDriveTrain();
     }
 

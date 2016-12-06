@@ -5,11 +5,14 @@ import edu.wpi.first.wpilibj.Joystick;
 public class BotConstants {
 	//Driving Constants
 	
-	public static boolean DRIVE_ENABLED = false;
+	public static boolean DRIVE_ENABLED = true;
+	public static final double JOY_DEADZONE = 0.05;
 	
-	public static double VEL_MULTIPLIER = 4;
+	public static boolean DRIVE_PID_ENABLED = false;
+	
+	public static double VEL_MULTIPLIER = 2;
 	public static double BRAKE_FACTOR = 0.0001;
-	public static double MAX_VELOCITY = 5.0;
+	public static double MAX_VELOCITY = 2.0;
 	
 	public static final boolean HANDHELDJOY = false;
 	public static final Joystick PS3JOY = new Joystick(2);

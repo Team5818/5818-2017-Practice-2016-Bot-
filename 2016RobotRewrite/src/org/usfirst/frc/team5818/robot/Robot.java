@@ -10,6 +10,7 @@ import org.usfirst.frc.team5818.controllers.CoDriver;
 import org.usfirst.frc.team5818.controllers.Driver;
 import org.usfirst.frc.team5818.robot.commands.ExampleCommand;
 import org.usfirst.frc.team5818.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team5818.robot.subsystems.DriveTrainSide;
 import org.usfirst.frc.team5818.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team5818.robot.subsystems.ShooterArm;
 
@@ -112,8 +113,8 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
-        Driver.driverInit();
-        CoDriver.CoDriverInit();
+        Driver.driverInit(driveTrain);
+        CoDriver.CoDriverInit(shootArm);
     }
 
     /**

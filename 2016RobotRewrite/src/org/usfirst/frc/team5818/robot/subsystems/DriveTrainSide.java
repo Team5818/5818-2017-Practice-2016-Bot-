@@ -18,6 +18,9 @@ public class DriveTrainSide extends Subsystem implements PIDOutput, PIDSource{
 	
 	public DriveTrainSide (CANTalon frontTalon, CANTalon middleTalon, CANTalon backTalon, boolean isInverted, Side side) {
 		setInversion(frontTalon, middleTalon, backTalon, isInverted);
+		fTal = frontTalon;
+		mTal = middleTalon;
+		bTal = backTalon;
 	}
 	
 	private static final double PID_KP = 1.0; ///////////////
@@ -27,9 +30,15 @@ public class DriveTrainSide extends Subsystem implements PIDOutput, PIDSource{
 	public PIDController velController = new PIDController(PID_KP, PID_KI, PID_KD, this, this);
 	
     public void setVelocity(double numIn) {
-    	fTal.set(numIn*BotConstants.VEL_MULTIPLIER);
-    	mTal.set(numIn*BotConstants.VEL_MULTIPLIER);
-    	bTal.set(numIn*BotConstants.VEL_MULTIPLIER);
+    	if(numIn <= BotConstants.MAX_VELOCITY) {
+    		fTal.set(numIn*BotConstants.VEL_MULTIPLIER);
+    		mTal.set(numIn*BotConstants.VEL_MULTIPLIER);
+    		bTal.set(numIn*BotConstants.VEL_MULTIPLIER);
+    	} else {
+    		fTal.set(BotConstants.MAX_VELOCITY);
+    		mTal.set(BotConstants.MAX_VELOCITY);
+    		bTal.set(BotConstants.MAX_VELOCITY);
+    	}
     }
     
     public void setInversion(CANTalon fTalon, CANTalon mTalon, CANTalon bTalon,boolean inverted) {
@@ -74,11 +83,11 @@ public class DriveTrainSide extends Subsystem implements PIDOutput, PIDSource{
 
 	@Override
 	public PIDSourceType getPIDSourceType() {
-		return null;
+		return PIDSourceType.kRate;
 	}
 
 	@Override
 	public double pidGet() {
-		return mTal.getSpeed();
+		return mTal.getEncVelocity();
 	}
 }

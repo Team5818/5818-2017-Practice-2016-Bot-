@@ -2,6 +2,7 @@ package org.usfirst.frc.team5818.controllers;
 
 import org.usfirst.frc.team5818.constants.BotConstants;
 import org.usfirst.frc.team5818.robot.commands.ArmControlCommand;
+import org.usfirst.frc.team5818.robot.subsystems.ShooterArm;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
@@ -15,9 +16,8 @@ public class CoDriver {
 	private static double joyY;
 	
 	private static Command shootCommand;
-	public static void CoDriverInit() {
-		shootCommand = new ArmControlCommand();
-		
+	public static void CoDriverInit(ShooterArm armIn) {
+		shootCommand = new ArmControlCommand(armIn);
 		CODRIVER_LEFT_JS = new Joystick(BotConstants.CODRIVER_LEFT);
 		CODRIVER_RIGHT_JS = new Joystick(BotConstants.CODRIVER_RIGHT); 
 	}
