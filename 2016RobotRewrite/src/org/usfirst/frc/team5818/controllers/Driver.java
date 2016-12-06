@@ -9,12 +9,11 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 
 public class Driver {
-	public static boolean SwapButtonDown;
-	public static boolean DownButtonDown;
-	public static boolean UpButtonDown;
+	private static boolean DownButtonDown;
+	private static boolean UpButtonDown;
 	
-	public static double joyXAbs;
-	public static double dampingFactor;
+	private static double joyXAbs;
+	private static double dampingFactor;
 	private static double dfMultiplier = 1;
 	
 	private static double joyX;
@@ -27,8 +26,8 @@ public class Driver {
 
 	public static void driverInit(DriveTrain train) {
 		driveControl = new DriveControlCommand(train);
-		CONTROLJOYFB = new Joystick(BotConstants.CONTROLJOYFB_NUM);
-		CONTROLJOYLR = new Joystick(BotConstants.CONTROLJOYLR_NUM);
+		CONTROLJOYFB = new Joystick(BotConstants.DRIVERJOYFB_NUM);
+		CONTROLJOYLR = new Joystick(BotConstants.DRIVERJOYLR_NUM);
 	}
 	
 	public static void driverPeriodic() {
@@ -48,22 +47,17 @@ public class Driver {
     	if(BotConstants.HANDHELDJOY) {
     		joyX = BotConstants.PS3JOY.getX();
     		joyY = BotConstants.PS3JOY.getY();
-    		SwapButtonDown = BotConstants.PS3JOY.getRawButton(BotConstants.PS3_SWAP_BUTTON);
-            UpButtonDown = BotConstants.PS3JOY.getRawButton(BotConstants.PS3_DOWN_BUTTON);
+    		UpButtonDown = BotConstants.PS3JOY.getRawButton(BotConstants.PS3_DOWN_BUTTON);
             DownButtonDown = BotConstants.PS3JOY.getRawButton(BotConstants.PS3_UP_BUTTON);
     	} else {
     		joyX = CONTROLJOYLR.getX();
             joyY = CONTROLJOYFB.getY();
-            SwapButtonDown = CONTROLJOYLR.getRawButton(BotConstants.SWAP_BUTTON);
             UpButtonDown = CONTROLJOYLR.getRawButton(BotConstants.DOWN_BUTTON);
             DownButtonDown = CONTROLJOYLR.getRawButton(BotConstants.UP_BUTTON);
         }
         setDampingFactor();
     }
     public static void checkButtons() {
-    	if(SwapButtonDown) {
-        	joyY = -1 * joyY;
-        }
     	if (UpButtonDown) {
         	dfMultiplier += 0.01;
         }

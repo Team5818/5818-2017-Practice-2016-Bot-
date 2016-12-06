@@ -18,6 +18,10 @@ public class RobotMap {
 	public static final int TALON_ARM_0 = 12;
 	public static final int TALON_ARM_1 = 7;
 	
+	// Flywheel Shooting
+	//###CHANGE THIS###//
+	public static final int TALON_WHEEL_0 = 0;
+	
 	// Gyro in
 	public static final int GYRO_CHANNEL = 0;
 }

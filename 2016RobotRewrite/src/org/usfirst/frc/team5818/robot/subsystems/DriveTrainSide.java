@@ -66,7 +66,7 @@ public class DriveTrainSide extends Subsystem implements PIDOutput, PIDSource{
 	
 	@Override
 	public void pidWrite(double output) {
-		setVelocity(output);
+			setVelocity(output);
 	}
 	
 	public void setSideVelocity(double target) {
