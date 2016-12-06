@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5818.robot.subsystems;
 
 import org.usfirst.frc.team5818.constants.BotConstants;
+
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDOutput;
@@ -13,8 +14,8 @@ public class DriveTrainSide extends Subsystem implements PIDOutput, PIDSource{
 	private CANTalon fTal, mTal, bTal;
 	
 	enum Side {
-        RIGHT, LEFT;
-    }
+	RIGHT, LEFT;
+	}
 	
 	public DriveTrainSide (CANTalon frontTalon, CANTalon middleTalon, CANTalon backTalon, boolean isInverted, Side side) {
 		setInversion(frontTalon, middleTalon, backTalon, isInverted);
@@ -29,19 +30,19 @@ public class DriveTrainSide extends Subsystem implements PIDOutput, PIDSource{
 	
 	public PIDController velController = new PIDController(PID_KP, PID_KI, PID_KD, this, this);
 	
-    public void setVelocity(double numIn) {
-    	if(numIn <= BotConstants.MAX_VELOCITY) {
-    		fTal.set(numIn*BotConstants.VEL_MULTIPLIER);
-    		mTal.set(numIn*BotConstants.VEL_MULTIPLIER);
-    		bTal.set(numIn*BotConstants.VEL_MULTIPLIER);
-    	} else {
-    		fTal.set(BotConstants.MAX_VELOCITY);
-    		mTal.set(BotConstants.MAX_VELOCITY);
-    		bTal.set(BotConstants.MAX_VELOCITY);
-    	}
-    }
-    
-    public void setInversion(CANTalon fTalon, CANTalon mTalon, CANTalon bTalon,boolean inverted) {
+	public void setVelocity(double numIn) {
+		if(numIn <= BotConstants.MAX_VELOCITY) {
+			fTal.set(numIn*BotConstants.VEL_MULTIPLIER);
+			mTal.set(numIn*BotConstants.VEL_MULTIPLIER);
+			bTal.set(numIn*BotConstants.VEL_MULTIPLIER);
+		} else {
+			fTal.set(BotConstants.MAX_VELOCITY);
+			mTal.set(BotConstants.MAX_VELOCITY);
+			bTal.set(BotConstants.MAX_VELOCITY);
+		}
+	}
+
+	public void setInversion(CANTalon fTalon, CANTalon mTalon, CANTalon bTalon,boolean inverted) {
 		fTalon.setInverted(inverted);
 		fTalon.reverseOutput(inverted);
 		mTalon.setInverted(inverted);
@@ -57,16 +58,17 @@ public class DriveTrainSide extends Subsystem implements PIDOutput, PIDSource{
 	
 	public void brake() {
 		for(double i = this.pidGet(); i >= 0; i = i - BotConstants.BRAKE_FACTOR) {
-			if(i <= BotConstants.JOY_DEADZONE * BotConstants.VEL_MULTIPLIER)
+			if(i <= BotConstants.JOY_DEADZONE * BotConstants.VEL_MULTIPLIER) {
 				this.setSideVelocity(0);
-			else
+			} else {
 				this.setSideVelocity(i);
+			}
 		}
 	}
 	
 	@Override
 	public void pidWrite(double output) {
-			setVelocity(output);
+		setVelocity(output);
 	}
 	
 	public void setSideVelocity(double target) {
